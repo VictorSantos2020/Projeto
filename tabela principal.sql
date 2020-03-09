@@ -8,7 +8,7 @@ create table Cliente( -- AQUI CRIAMOS A TABELA CLIENTE
     cpf char (11), -- CPF DO USUARIO, CASO FOR PESSOA FISICA
     cnpj char (14), -- CNPJ DO USUARIO, CASO FOR PESSOA JURIDICA
     rg varchar (20), --  RG DO USUARIO, CASO FOR PESSOA FISICA
-    email varchar (40) not null -- EMAIL DO CLIENTE
+    email varchar (40) not null, -- EMAIL DO CLIENTE
 	idEndereco int,
 	idContato int,
 	foreign key (idEndereco) references Endereco(idEndereco),
@@ -35,15 +35,15 @@ create table Usuario (
 );
 
 create table Estufa (
-	idEstufa int primary key auto_increment
+	idEstufa int primary key auto_increment,
 	idCliente int,
-	foreign key (idCliente) references Cliente(idCliente);
+	foreign key (idCliente) references Cliente(idCliente)
 );
 
 create table Setor (
-	idSetor int primary key auto_increment
+	idSetor int primary key auto_increment,
 	idEstufa int,
-	foreign key (idCliente) references Cliente(idCliente);
+	foreign key (idCliente) references Cliente(idCliente)
 );
 
 create table Sensor (
@@ -52,13 +52,11 @@ create table Sensor (
 	foreign key (idSetor) references Setor(idSetor)
 );
 
-desc Cliente;
 create table Contato (
 	idContato int primary key auto_increment,
 	telefoneFixo char (10),
 	celularUm char (11) not null,
-	celularDois char (11),
-	
+	celularDois char (11)
  );
  
  create table Medicao (
